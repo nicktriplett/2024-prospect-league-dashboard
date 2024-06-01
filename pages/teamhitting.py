@@ -20,7 +20,7 @@ team_hitting_stats = pd.read_csv(data_file2)
 team_hitting_stats
 
 # Dropping TOTALS Observations for Bar Chart
-team_hitting_stats.drop(17,inplace=True)
+team_hitting_stats.drop(18,inplace=True)
 
 # Changing columns from object to numeric
 team_hitting_stats['TTO%'] = team_hitting_stats['TTO%'].str.rstrip('%').astype(float)
@@ -165,7 +165,7 @@ layout=dbc.Container(
                     ],
                     optionHeight=25,
                     className='mt-1 mb-3',
-                    value='wRC+',
+                    value='OBP',
                     clearable=False
                 )
             ],
@@ -181,7 +181,7 @@ layout=dbc.Container(
                     ],
                     optionHeight=25,
                     className='mt-1 mb-3',
-                    value='Win %',
+                    value='SLG',
                     clearable=False
                 )
             ],
@@ -328,7 +328,7 @@ def update_data_and_table(
             "Lafayette Aviators":'#FFC82F',
             "Danville Dans":'#D22730',
             "Dubois County Bombers":'#0C2340',
-            "Full Count Rhythm":'8BB8E8',
+            "Full Count Rhythm":'#8BB8E8',
             "Normal CornBelters":'#2C5234',
             "REX Baseball":'#0057B7',
             "Burlington Bees":'#FFB81C',
@@ -410,7 +410,7 @@ def update_data_and_table(
             "Lafayette Aviators":'#FFC82F',
             "Danville Dans":'#D22730',
             "Dubois County Bombers":'#0C2340',
-            "Full Count Rhythm":'8BB8E8',
+            "Full Count Rhythm":'#8BB8E8',
             "Normal CornBelters":'#2C5234',
             "REX Baseball":'#0057B7',
             "Burlington Bees":'#FFB81C',
