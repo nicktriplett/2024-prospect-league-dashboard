@@ -20,25 +20,26 @@ player_hitting_stats = pd.read_csv(data_file1)
 player_hitting_stats
 
 # Cleaning Data for Visualizations
-player_hitting_stats['Name'].replace('\n', '', regex=True, inplace=True)
+# player_hitting_stats['Name'].replace('\n', '', regex=True, inplace=True)
 
 # Dropping Column(s) for Visualizations
-player_hitting_stats.drop(columns=['Name_With_Blanks'],inplace=True)
+# player_hitting_stats.drop(columns=['Name_With_Blanks'],inplace=True)
 
-player_hitting_stats.drop(485,inplace=True)
+# player_hitting_stats.drop(485,inplace=True)
 
 # Convert columns to float/numeric
 player_hitting_stats['K%'] = player_hitting_stats['K%'].str.rstrip('%').astype(float)
 player_hitting_stats['BB%'] = player_hitting_stats['BB%'].str.rstrip('%').astype(float)
-player_hitting_stats['SB%'] = player_hitting_stats['SB%'].str.rstrip('%').astype(float)
+# player_hitting_stats['SB%'] = player_hitting_stats['SB%'].str.rstrip('%').astype(float)
 player_hitting_stats['TTO%'] = player_hitting_stats['TTO%'].str.rstrip('%').astype(float)
-playerhitting_columns_to_convert = ['G','PA','PA/G','BB%','K%','SB%','BABIP','RC','wOBA','wRAA','wRAA/PA','wRC','wRC+']
+playerhitting_columns_to_convert = ['G','PA','PA/G','BB%','K%','BABIP', 'RC']
+# include sb% here and 'wOBA','wRAA','wRAA/PA','wRC','wRC+'
 for column in playerhitting_columns_to_convert:
     player_hitting_stats[column] = pd.to_numeric(player_hitting_stats[column], errors='coerce')
 
 # Creating Dataframe for Visualization
-player_hitting_stats1 = player_hitting_stats.drop(columns=['Name','#','Year','Pos'])
-player_hitting_stats1['Name (Team)'] = player_hitting_stats['Name'] + ' (' + player_hitting_stats['Team'] + ')'
+player_hitting_stats1 = player_hitting_stats.drop(columns=['Name','#','Year','Position'])
+# player_hitting_stats1['Name (Team)'] = player_hitting_stats['Name'] + ' (' + player_hitting_stats['Team'] + ')'
 player_hitting_stats1.loc[:,('Name (Team)')]
 player_hitting_stats1.set_index('Name (Team)',inplace=True)
 player_hitting_stats2=player_hitting_stats1.drop(columns=['Team'])
