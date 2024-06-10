@@ -102,7 +102,7 @@ layout=dbc.Container(
                     placeholder='Please select a team to review.',
                     optionHeight=25,
                     className='mt-1 mb-3',
-                    value=['Chillicothe Paints'],
+                    value=['Cape Catfish'],
                     clearable=False
                 )
             ],
@@ -174,7 +174,7 @@ layout=dbc.Container(
                     ],
                     optionHeight=25,
                     className='mt-1 mb-3',
-                    value='Win %',
+                    value='K',
                     clearable=False
                 )
             ],
@@ -321,7 +321,7 @@ def charts(stat_selection4,list_of_teams1,stat_selection5,stat_selection6,select
             "Lafayette Aviators":'#FFC82F',
             "Danville Dans":'#D22730',
             "Dubois County Bombers":'#0C2340',
-            "Full Count Rhythm":'8BB8E8',
+            "Full Count Rhythm":'#8BB8E8',
             "Normal CornBelters":'#2C5234',
             "REX Baseball":'#0057B7',
             "Burlington Bees":'#FFB81C',
@@ -402,7 +402,7 @@ def charts(stat_selection4,list_of_teams1,stat_selection5,stat_selection6,select
             "Lafayette Aviators":'#FFC82F',
             "Danville Dans":'#D22730',
             "Dubois County Bombers":'#0C2340',
-            "Full Count Rhythm":'8BB8E8',
+            "Full Count Rhythm":'#8BB8E8',
             "Normal CornBelters":'#2C5234',
             "REX Baseball":'#0057B7',
             "Burlington Bees":'#FFB81C',
