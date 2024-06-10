@@ -27,13 +27,13 @@ player_hitting_stats['K%'] = player_hitting_stats['K%'].str.rstrip('%').astype(f
 player_hitting_stats['BB%'] = player_hitting_stats['BB%'].str.rstrip('%').astype(float)
 # player_hitting_stats['SB%'] = player_hitting_stats['SB%'].str.rstrip('%').astype(float)
 player_hitting_stats['TTO%'] = player_hitting_stats['TTO%'].str.rstrip('%').astype(float)
-playerhitting_columns_to_convert = ['G','PA','PA/G','BB%','K%','BABIP', 'RC']
-# include sb% here and 'wOBA','wRAA','wRAA/PA','wRC','wRC+'
+playerhitting_columns_to_convert = ['G','PA','PA/G','BB%','K%','BABIP', 'RC', 'wOBA','wRAA','wRAA/PA','wRC']
+# include sb% here and wRC+'
 for column in playerhitting_columns_to_convert:
     player_hitting_stats[column] = pd.to_numeric(player_hitting_stats[column], errors='coerce')
 
 # Creating Dataframe for Visualization
-player_hitting_stats1 = player_hitting_stats.drop(columns=['Name','#','Year','Position', 'Name (Original)', 'Team G Played', 'PA/TG','Abbreviation', 'Participation Level'])
+player_hitting_stats1 = player_hitting_stats.drop(columns=['Name','#','Year','Position', 'Name (Original)', 'Team G Played', 'PA/TG','Abbreviation', 'Games Played %'])
 player_hitting_stats1.loc[:,('Name (Team)')]
 player_hitting_stats1.set_index('Name (Team)',inplace=True)
 player_hitting_stats2=player_hitting_stats1.drop(columns=['Team'])
@@ -128,7 +128,7 @@ layout=dbc.Container(
                     ],
                     optionHeight=25,
                     className='mt-0 mb-3',
-                    value='OBP',
+                    value='OPS',
                     clearable=False
                 )
             ],
@@ -144,7 +144,7 @@ layout=dbc.Container(
                     ],
                     optionHeight=25,
                     className='mt-0 mb-3',
-                    value='SLG',
+                    value='wRC',
                     clearable=False
                 )
             ],
@@ -219,7 +219,7 @@ layout=dbc.Container(
                     placeholder='Please select a team to review.',
                     optionHeight=25,
                     className='mt-1 mb-3',
-                    value=['Michael Mylott (THR)'],
+                    value=['Lucas Smith (IVY)'],
                     clearable=False
                 )
             ],
@@ -347,7 +347,7 @@ def charts(filter_value,selected_teams,stat_selection1,stat_selection2,stat_sele
         stat_selection3 = ['RC']
 
     if len(player_selection)==0:
-        player_selection = ['Michael Mylott (THR)']
+        player_selection = ['Lucas Smith (IVY)']
 
     if derived_virtual_selected_rows1 is None:
         derived_virtual_selected_rows1 = []
