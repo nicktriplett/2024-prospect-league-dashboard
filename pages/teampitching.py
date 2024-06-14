@@ -21,8 +21,7 @@ last_row_index4 = len(team_pitching_stats) - 1
 team_pitching_stats.drop(last_row_index4, inplace=True)
 
 # Changing strings to integers/floats
-teampitching_columns_to_convert = ['IP','H','R','ER','BB','K']
-# need HBP
+teampitching_columns_to_convert = ['IP','H','R','ER','BB','K','HBP']
 for column in teampitching_columns_to_convert:
     team_pitching_stats[column] = pd.to_numeric(team_pitching_stats[column], errors='coerce')
 
