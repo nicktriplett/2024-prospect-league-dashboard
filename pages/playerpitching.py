@@ -25,8 +25,8 @@ player_pitching_stats['Name'].replace('\n', '', regex=True, inplace=True)
 last_row_index3 = len(player_pitching_stats) - 1
 player_pitching_stats.drop(last_row_index3, inplace=True)
 
-playerpitching_columns_to_convert = ['G','IP','H','R','ER','BB','K']
-# need 'H/9','BB/9','K/BB','WHIP','FIP','LOB %','FIP-','E-F'
+playerpitching_columns_to_convert = ['G','IP','H','R','ER','BB','K','H/9','BB/9','WHIP']
+# need 'K/BB','FIP','LOB %','FIP-','E-F'
 for column in playerpitching_columns_to_convert:
     player_pitching_stats[column] = pd.to_numeric(player_pitching_stats[column], errors='coerce')
 
@@ -36,7 +36,7 @@ player_pitching_stats1.loc[:,('Name (Team)')]
 player_pitching_stats1.set_index('Name (Team)',inplace=True)
 player_pitching_stats2=player_pitching_stats1.drop(columns=['Team'])
 
-player_pitching_stats3 = player_pitching_stats[player_pitching_stats['IP'] >= 5]
+player_pitching_stats3 = player_pitching_stats[player_pitching_stats['Qualified'] == "Yes"]
 player_pitching_stats3.set_index('Name (Team)',inplace=True)
 
 
@@ -331,12 +331,12 @@ def charts(filter_value1,selected_teams1,stat_selection1,stat_selection2,stat_se
     if filter_value1 == 'all':
         filtered_data = player_pitching_stats1
     else:
-        filtered_data = player_pitching_stats1[player_pitching_stats1['IP'] >= 5]
+        filtered_data = player_pitching_stats1[player_pitching_stats1['Qualified'] == "Yes"]
     
     filtered_data = filtered_data[filtered_data['Team'].isin(selected_teams1)]
 
     if len(filtered_data) == 0 and filter_value1 == 'greater_than_0.8':
-        filtered_data = player_pitching_stats1[player_pitching_stats1['IP'] >= 5]
+        filtered_data = player_pitching_stats1[player_pitching_stats1['Qualified'] == "Yes"]
     elif len(filtered_data) == 0:
         filtered_data = player_pitching_stats1
     
