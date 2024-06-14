@@ -331,7 +331,7 @@ def charts(filter_value,selected_teams,stat_selection1,stat_selection2,stat_sele
     if filter_value == 'all':
         filtered_data = player_hitting_stats1
     else:
-        filtered_data = player_hitting_stats1[player_hitting_stats1['Qualified'] += "Yes"]
+        filtered_data = player_hitting_stats1[player_hitting_stats1['Qualified'] == "Yes"]
 
     filtered_data = filtered_data[filtered_data['Team'].isin(selected_teams)]
 
