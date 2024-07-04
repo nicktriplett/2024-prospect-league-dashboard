@@ -218,7 +218,7 @@ layout=dbc.Container(
                     placeholder='Please select a player to review.',
                     optionHeight=25,
                     className='mt-1 mb-3',
-                    value=['Grant Holderfield (IVY)'],
+                    value=['Jorge Romero (CGR)'],
                     clearable=False
                 )
             ],
@@ -347,7 +347,7 @@ def charts(filter_value1,selected_teams1,stat_selection1,stat_selection2,stat_se
         stat_selection3 = ['ERA']
 
     if len(player_selection)==0:
-        player_selection = ['Grant Holderfield (IVY)']
+        player_selection = ['Jorge Romero (CGR)']
 
     if derived_virtual_selected_rows3 is None:
         derived_virtual_selected_rows3 = []
