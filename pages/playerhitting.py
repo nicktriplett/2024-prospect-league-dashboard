@@ -219,7 +219,7 @@ layout=dbc.Container(
                     placeholder='Please select a team to review.',
                     optionHeight=25,
                     className='mt-1 mb-3',
-                    value=['Landen Johnson (NOR)'],
+                    value=['Merik Carter (JAX)'],
                     clearable=False
                 )
             ],
@@ -347,7 +347,7 @@ def charts(filter_value,selected_teams,stat_selection1,stat_selection2,stat_sele
         stat_selection3 = ['RC']
 
     if len(player_selection)==0:
-        player_selection = ['Landen Johnson (NOR)']
+        player_selection = ['Merik Carter (JAX)']
 
     if derived_virtual_selected_rows1 is None:
         derived_virtual_selected_rows1 = []
