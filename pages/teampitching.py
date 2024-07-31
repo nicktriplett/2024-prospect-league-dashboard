@@ -285,7 +285,7 @@ def charts(stat_selection4,list_of_teams1,stat_selection5,stat_selection6,select
         stat_selection4 = ['ERA']
 
     if len(list_of_teams1)==0:
-        list_of_teams1 = ['Chillicothe Paints']
+        list_of_teams1 = ['Cape Catfish']
 
     if derived_virtual_selected_rows4 is None:
         derived_virtual_selected_rows4 = []
