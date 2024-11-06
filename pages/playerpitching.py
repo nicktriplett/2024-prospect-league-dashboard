@@ -62,6 +62,9 @@ layout=dbc.Container(
                     id='scatter_plot5',
                     className='mx-4 my-3',
                     config=dict(displayModeBar=False),
+                    style={
+                        'height':'425px'
+                    }
                 ),
             ],
             width=10,
@@ -218,7 +221,7 @@ layout=dbc.Container(
                     placeholder='Please select a player to review.',
                     optionHeight=25,
                     className='mt-1 mb-3',
-                    value=['Zane Brown (FCR)'],
+                    value=['Ean DiPasquale (CLN)'],
                     clearable=False
                 )
             ],
@@ -245,9 +248,12 @@ layout=dbc.Container(
                     sort_mode="multi",
                     page_action="native",
                     page_current=0,
-                    page_size=20,
+                    page_size=10,
                     style_table={'overflowX': 'auto'},
-                    style_cell={'textAlign': 'center'},
+                    style_cell={'textAlign': 'center','backgroundColor': 'white','color': '#000','padding': '10px','border': '1px solid black',},
+                    style_header={'backgroundColor': 'black','fontWeight': 'bold','color': 'white','textAlign': 'center'},
+                    style_data_conditional=[{'if': {'row_index': 'odd'},'backgroundColor': 'lightgrey',},{'if': {'row_index': 'even'},'backgroundColor': 'white'}],
+                    
                 ),
             ],
             width=10,
@@ -347,7 +353,7 @@ def charts(filter_value1,selected_teams1,stat_selection1,stat_selection2,stat_se
         stat_selection3 = ['ERA']
 
     if len(player_selection)==0:
-        player_selection = ['Zane Brown (FCR)']
+        player_selection = ['Ean DiPasquale (CLN)']
 
     if derived_virtual_selected_rows3 is None:
         derived_virtual_selected_rows3 = []
