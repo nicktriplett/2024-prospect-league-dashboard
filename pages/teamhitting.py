@@ -89,7 +89,7 @@ layout=dbc.Container(
                         dict(label=x,value=x) for x in stat_list
                     ],
                     className='mt-1 mb-3',
-                    value='OPS',
+                    value='wRC',
                     multi=False,
                     optionHeight=25,
                     clearable=False
@@ -109,7 +109,7 @@ layout=dbc.Container(
                     placeholder='Please select a team to review.',
                     optionHeight=25,
                     className='mt-1 mb-3',
-                    value=['Chillicothe Paints'],
+                    value=['Illinois Valley Pistol Shrimp'],
                     clearable=False
                 )
             ],
@@ -209,9 +209,13 @@ layout=dbc.Container(
                     sort_mode="multi",
                     page_action="native",
                     page_current=0,
-                    page_size=len(team_hitting_stats1),
+                    page_size=10,
+                    # page_size=len(team_hitting_stats1),
                     style_table={'overflowX': 'auto'},
-                    style_cell={'textAlign': 'center'},
+                    style_cell={'textAlign': 'center','backgroundColor': 'white','color': '#000','padding': '10px','border': '1px solid black',},
+                    style_header={'backgroundColor': 'black','fontWeight': 'bold','color': 'white','textAlign': 'center'},
+                    style_data_conditional=[{'if': {'row_index': 'odd'},'backgroundColor': 'lightgrey',},{'if': {'row_index': 'even'},'backgroundColor': 'white'}],
+                    
                 ),
             ],
             width=10,
@@ -291,10 +295,10 @@ def update_data_and_table(
         selected_columns, column_selection, rows, derived_virtual_selected_rows
 ):
     if len(stat_selection) == 0:
-        stat_selection = ['OPS']
+        stat_selection = ['wRC']
 
     if len(list_of_teams) == 0:
-        list_of_teams = ['Chillicothe Paints']
+        list_of_teams = ['Illinois Valley Pistol Shrimp']
 
     if derived_virtual_selected_rows is None:
         derived_virtual_selected_rows = []
