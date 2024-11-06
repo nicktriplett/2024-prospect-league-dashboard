@@ -28,12 +28,13 @@ player_hitting_stats['BB%'] = player_hitting_stats['BB%'].str.rstrip('%').astype
 # player_hitting_stats['SB%'] = player_hitting_stats['SB%'].str.rstrip('%').astype(float)
 player_hitting_stats['TTO%'] = player_hitting_stats['TTO%'].str.rstrip('%').astype(float)
 playerhitting_columns_to_convert = ['G','PA','PA/G','BB%','K%','BABIP', 'RC', 'wOBA','wRAA','wRAA/PA','wRC']
-# include sb% here and wRC+'
+# include sb%  and wRC+ here
 for column in playerhitting_columns_to_convert:
     player_hitting_stats[column] = pd.to_numeric(player_hitting_stats[column], errors='coerce')
 
 # Creating Dataframe for Visualization
-player_hitting_stats1 = player_hitting_stats.drop(columns=['Name','#','Year','Position', 'Name (Original)', 'Team G Played', 'PA/TG','Abbreviation', 'Games Played %'])
+player_hitting_stats = player_hitting_stats.drop(columns=['#','Year','Position', 'Name (Original)', 'Team G Played', 'PA/TG','Abbreviation', 'Games Played %','PF'])
+player_hitting_stats1 = player_hitting_stats.drop(columns=['Name'])
 player_hitting_stats1.loc[:,('Name (Team)')]
 player_hitting_stats1.set_index('Name (Team)',inplace=True)
 player_hitting_stats2=player_hitting_stats1.drop(columns=['Team'])
@@ -64,6 +65,9 @@ layout=dbc.Container(
                     id='scatter_plot',
                     className='mx-4 my-3',
                     config=dict(displayModeBar=False),
+                    style={
+                        'height':'425px'
+                    }
                 ),
             ],
             width=10,
@@ -199,7 +203,7 @@ layout=dbc.Container(
                         dict(label=x,value=x) for x in batting_stat_list
                     ],
                     className='mt-1 mb-3',
-                    value='RC',
+                    value='wRC',
                     multi=False,
                     optionHeight=25,
                     clearable=False
@@ -219,7 +223,7 @@ layout=dbc.Container(
                     placeholder='Please select a team to review.',
                     optionHeight=25,
                     className='mt-1 mb-3',
-                    value=['Merik Carter (JAX)'],
+                    value=['Eric Colaco (CHI)'],
                     clearable=False
                 )
             ],
@@ -246,9 +250,12 @@ layout=dbc.Container(
                     sort_mode="multi",
                     page_action="native",
                     page_current=0,
-                    page_size=15,
+                    page_size=10,
                     style_table={'overflowX': 'auto'},
-                    style_cell={'textAlign': 'center'},
+                    style_cell={'textAlign': 'center','backgroundColor': 'white','color': '#000','padding': '10px','border': '1px solid black',},
+                    style_header={'backgroundColor': 'black','fontWeight': 'bold','color': 'white','textAlign': 'center'},
+                    style_data_conditional=[{'if': {'row_index': 'odd'},'backgroundColor': 'lightgrey',},{'if': {'row_index': 'even'},'backgroundColor': 'white'}],
+                        
                 ),
             ],
             width=10,
@@ -344,10 +351,10 @@ def charts(filter_value,selected_teams,stat_selection1,stat_selection2,stat_sele
         filtered_data = player_hitting_stats1
 
     if len(stat_selection3)==0:
-        stat_selection3 = ['RC']
+        stat_selection3 = ['wRC']
 
     if len(player_selection)==0:
-        player_selection = ['Merik Carter (JAX)']
+        player_selection = ['Eric Colaco (CHI)']
 
     if derived_virtual_selected_rows1 is None:
         derived_virtual_selected_rows1 = []
