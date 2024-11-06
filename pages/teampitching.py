@@ -101,7 +101,7 @@ layout=dbc.Container(
                     placeholder='Please select a team to review.',
                     optionHeight=25,
                     className='mt-1 mb-3',
-                    value=['Cape Catfish'],
+                    value=['Illinois Valley Pistol Shrimp'],
                     clearable=False
                 )
             ],
@@ -201,9 +201,13 @@ layout=dbc.Container(
                     sort_mode="multi",
                     page_action="native",
                     page_current=0,
-                    page_size=len(team_pitching_stats1),
+                    page_size=10,
+                    # page_size=len(team_pitching_stats1),
                     style_table={'overflowX': 'auto'},
-                    style_cell={'textAlign': 'center'},
+                    style_cell={'textAlign': 'center','backgroundColor': 'white','color': '#000','padding': '10px','border': '1px solid black',},
+                    style_header={'backgroundColor': 'black','fontWeight': 'bold','color': 'white','textAlign': 'center'},
+                    style_data_conditional=[{'if': {'row_index': 'odd'},'backgroundColor': 'lightgrey',},{'if': {'row_index': 'even'},'backgroundColor': 'white'}],
+                    
                 ),
             ],
             width=10,
@@ -285,7 +289,7 @@ def charts(stat_selection4,list_of_teams1,stat_selection5,stat_selection6,select
         stat_selection4 = ['ERA']
 
     if len(list_of_teams1)==0:
-        list_of_teams1 = ['Cape Catfish']
+        list_of_teams1 = ['Illinois Valley Pistol Shrimp']
 
     if derived_virtual_selected_rows4 is None:
         derived_virtual_selected_rows4 = []
