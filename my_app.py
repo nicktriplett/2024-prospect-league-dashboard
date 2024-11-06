@@ -66,7 +66,6 @@ app.layout = dbc.Container(
                 ),
                 dbc.DropdownMenu(
                     children=[
-                        dbc.DropdownMenuItem('Graham Dynis',href='/grahamdynis'),
                         dbc.DropdownMenuItem('Nick Triplett',href='/nicktriplett'),
                         dbc.DropdownMenuItem('The Dashboard',href='/thedashboard'),
                     ],
